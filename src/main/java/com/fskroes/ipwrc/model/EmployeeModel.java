@@ -1,6 +1,7 @@
 package com.fskroes.ipwrc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.security.auth.Subject;
@@ -20,9 +21,16 @@ public class EmployeeModel implements Principal {
     @Column(name = "employee_id")
     private long id;
 
+    @JsonProperty("email")
     private String email;
+
+    @JsonProperty("password")
     private String password;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("role")
     private String role;
 
     public long getId() {
@@ -38,13 +46,15 @@ public class EmployeeModel implements Principal {
         return password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public boolean hasRole(String role) {
         return this.role.equals(role);
     }
 
-    @Override
-    @JsonIgnore
     public String getName() {
-        return null;
+        return this.name;
     }
 }

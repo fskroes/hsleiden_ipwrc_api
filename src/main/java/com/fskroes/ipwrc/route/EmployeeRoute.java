@@ -30,6 +30,8 @@ public class EmployeeRoute {
     @UnitOfWork
     @Path("/login")
     public EmployeeModel authenticate(@Auth EmployeeModel employeeModel) {
+        System.out.println("name" + employeeModel.getName());
+        System.out.println("email" + employeeModel.getEmail());
         return employeeModel;
     }
 }

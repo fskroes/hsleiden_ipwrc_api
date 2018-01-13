@@ -23,4 +23,22 @@ public class ProductService {
     public Optional<ProductModel> getProductByName(String name) {
         return Optional.ofNullable(productDAO.getProductByName(name));
     }
+
+    public Optional<ProductModel> getProductById(int id) {
+        return Optional.ofNullable(productDAO.getProductById(id));
+    }
+
+    public ProductModel createProduct(ProductModel productModel) {
+        return productDAO.createProduct(productModel);
+    }
+
+    public ProductModel updateProduct(int id, ProductModel productModel) {
+//        ProductModel oldEmployee = productDAO.getProductById(id);
+        productModel.setId(id);
+        return productDAO.updateProduct(productModel);
+    }
+
+    public boolean deleteProduct(int id) {
+        return productDAO.deleteProduct(id);
+    }
 }

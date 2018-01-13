@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.fskroes.ipwrc.api.iml" filepath="$PROJECT_DIR$/com.fskroes.ipwrc.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipwrc_api.iml" filepath="$PROJECT_DIR$/ipwrc_api.iml" />
     </modules>
   </component>

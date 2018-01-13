@@ -25,7 +25,9 @@ public class UserAuthenticationService implements Authenticator<BasicCredentials
     public Optional<EmployeeModel> authenticate(BasicCredentials basicCredentials) throws AuthenticationException {
         EmployeeModel employeeModel = employeeDAO.findEmployeeByEmail(basicCredentials.getUsername());
         if (employeeModel != null && employeeModel.getPassword().equals(basicCredentials.getPassword())) {
+            System.out.println("----------------");
             System.out.println("sign in succes!");
+            System.out.println("----------------");
             return Optional.of(employeeModel);
         }
         return Optional.empty();
