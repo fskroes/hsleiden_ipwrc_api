@@ -1024,34 +1024,45 @@
       <ColNames>employee_id</ColNames>
       <UnderlyingIndexName>employee_employee_id_uindex</UnderlyingIndexName>
     </key>
-    <column id="258" parent="249" name="name">
+    <column id="258" parent="249" name="id">
       <Position>1</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="249" name="usd_value">
+    <column id="259" parent="249" name="name">
       <Position>2</Position>
-      <DataType>decimal(10)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="260" parent="249" name="category">
-      <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="261" parent="249" name="products_name_uindex">
-      <ColNames>name</ColNames>
+    <column id="260" parent="249" name="usd_value">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="249" name="category">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="249" name="imageurl">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="263" parent="249" name="products_id_uindex">
+      <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="262" parent="249" name="PRIMARY">
+    <key id="264" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>name</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="263" parent="249" name="products_name_uindex">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>products_name_uindex</UnderlyingIndexName>
+    <key id="265" parent="249" name="products_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>products_id_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

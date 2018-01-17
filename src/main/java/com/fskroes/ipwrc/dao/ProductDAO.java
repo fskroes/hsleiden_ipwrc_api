@@ -28,8 +28,46 @@ public class ProductDAO extends AbstractDAO<ProductModel> {
 
     public ProductModel getProductByName(String name) {
         Optional<ProductModel> result = productCache.stream()
-                .filter(employee -> employee.getName().equals(name))
+                .filter(product -> product.getName().equals(name))
                 .findAny();
         return result.orElse(uniqueResult(namedQuery("Product.FIND_BY_NAME").setParameter("name", name)));
+    }
+
+    public ProductModel getProductById(int id) {
+        Optional<ProductModel> result = productCache.stream()
+                .filter(product -> product.getId() == id)
+                .findAny();
+        return result.orElse(uniqueResult(namedQuery("Product.FIND_BY_ID").setParameter("id", id)));
+    }
+
+    public ProductModel createProduct(ProductModel productModel) {
+        if (sessionFactory.getCurrentSession() != null) {
+            ProductModel model = (ProductModel) sessionFactory.getCurrentSession().merge(productModel);
+            return model;
+        }
+        else {
+            return (ProductModel) sessionFactory.openSession().merge(productModel);
+        }
+    }
+
+    public ProductModel updateProduct(ProductModel productModel) {
+        if (sessionFactory.getCurrentSession() != null) {
+            ProductModel model = (ProductModel) sessionFactory.getCurrentSession().merge(productModel);
+            return model;
+        }
+        else {
+            return (ProductModel) sessionFactory.openSession().merge(productModel);
+        }
+    }
+
+    public boolean deleteProduct(int id) {
+        ProductModel model = getProductById(id);
+
+        if (sessionFactory.getCurrentSession() != null) {
+            sessionFactory.getCurrentSession().delete(model);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
