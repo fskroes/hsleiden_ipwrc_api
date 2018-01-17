@@ -1,19 +1,25 @@
 package com.fskroes.ipwrc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import javax.security.auth.Subject;
 import java.security.Principal;
 
 @Entity
 @Table(name = "employee")
-@NamedNativeQuery(
-        name = "Employee.FIND_BY_EMAIL",
-        query = "SELECT * FROM employee WHERE email = :email",
-        resultClass = EmployeeModel.class
-)
+
+@NamedNativeQueries({
+    @NamedNativeQuery(
+            name = "Employee.FIND_BY_EMAIL",
+            query = "SELECT * FROM employee WHERE email = :email",
+            resultClass = EmployeeModel.class
+    ),
+    @NamedNativeQuery(
+            name = "Employee.FIND_BY_ID",
+            query = "SELECT * FROM employee WHERE id = :id",
+            resultClass = EmployeeModel.class
+    )
+})
 public class EmployeeModel implements Principal {
 
     @Id
@@ -56,5 +62,9 @@ public class EmployeeModel implements Principal {
 
     public String getName() {
         return this.name;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
